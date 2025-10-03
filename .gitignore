@@ -1,0 +1,36 @@
+# OpenSCAD project .gitignore
+
+# STL files (generated output)
+*.stl
+
+# DXF files (2D exports)
+*.dxf
+
+# PNG files (rendered images)
+*.png
+
+# SVG files (2D vector exports)
+*.svg
+
+# Temporary files
+*.tmp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backup files
+*.bak
+*.backup
