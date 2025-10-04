@@ -6,8 +6,10 @@ $fn=100;
 
 face_height           = 65;
 face_width            = 81;
-mount_total_thickness = 5;
+mount_total_thickness = 4;
 mount_cut_thickness   = 1.5;
+
+faceplate_thickness   = 2;
 
 payload_cutout_width     = 50;
 payload_cutout_height    = 30;
@@ -19,9 +21,9 @@ encoder_pin_diameter = 2.5;
 encoder_pin_distance = 6;
 
 claw_mount_distance = 40;
-claw_mount_height_from_base = 10;
+claw_mount_height_from_base = 9.5;
 claw_mount_total_height = mount_total_thickness + claw_mount_height_from_base;
-claw_mount_offset = 2;
+claw_mount_offset = 4;
 
 tolerance = 0.5;
 
@@ -74,27 +76,43 @@ module encoder_cutout(x, y, pin_distance) {
     }
 }
 
-
-difference() {
-    mount_base();
-    electronics_cutout();
-    // Space for encoders
-    encoder_cutout(x =  encoder_shaft_distance/2, y = 0, pin_distance =  encoder_pin_distance);
-    encoder_cutout(x = -encoder_shaft_distance/2, y = 0, pin_distance = -encoder_pin_distance);
-    hull() {
-        translate(v = [0,0,-claw_mount_total_height/2]) {
-            scale(v = [1,1,2]) {
-                claw_mount_y_neg();
+module wall_mount() {
+    difference() {
+        mount_base();
+        electronics_cutout();
+        // Space for encoders
+        encoder_cutout(x =  encoder_shaft_distance/2, y = 0, pin_distance =  encoder_pin_distance);
+        encoder_cutout(x = -encoder_shaft_distance/2, y = 0, pin_distance = -encoder_pin_distance);
+        hull() {
+            translate(v = [0,0,-claw_mount_total_height/2]) {
+                scale(v = [1,1,2]) {
+                    claw_mount_y_neg();
+                }
+            }
+        }
+        hull() {
+            translate(v = [0,0,-claw_mount_total_height/2]) {
+                scale(v = [1,1,2]) {
+                    claw_mount_y_pos();
+                }
             }
         }
     }
-    hull() {
-        translate(v = [0,0,-claw_mount_total_height/2]) {
-            scale(v = [1,1,2]) {
-                claw_mount_y_pos();
-            }
+    claw_mount_y_neg();
+    claw_mount_y_pos();
+}
+
+module faceplate() {
+    difference() {
+        cube_on_z0(width = face_width, height = face_height, thickness = faceplate_thickness);
+        translate([encoder_shaft_distance/2, 0, 0]) {
+            cylinder(h = mount_total_thickness*2, r = encoder_shaft_diameter/2 + tolerance, center=true);
+        }
+        translate([-encoder_shaft_distance/2, 0, 0]) {
+            cylinder(h = mount_total_thickness*2, r = encoder_shaft_diameter/2 + tolerance, center=true);
         }
     }
 }
-claw_mount_y_neg();
-claw_mount_y_pos();
+
+// wall_mount();
+faceplate();

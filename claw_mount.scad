@@ -11,7 +11,7 @@ module claw_mount(
     wall_thickness   = 1.5,
     total_height     = 10,
     screw_diameter   = 3.5,
-    nut_diameter     = 6.7,
+    nut_diameter     = 6.65,
     nut_thickness    = 3
 ) {
 
