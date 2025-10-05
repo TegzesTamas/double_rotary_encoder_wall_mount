@@ -6,13 +6,13 @@ $fn=100;
 
 face_height           = 65;
 face_width            = 81;
-mount_total_thickness = 4;
+mount_total_thickness = 6;
 mount_cut_thickness   = 1.5;
 
 faceplate_thickness   = 2;
 
 payload_cutout_width     = 50;
-payload_cutout_height    = 30;
+payload_cutout_height    = 27;
 payload_cutout_thickness = mount_total_thickness - mount_cut_thickness + 3;
 
 encoder_shaft_diameter = 7;
@@ -20,7 +20,7 @@ encoder_shaft_distance = 24.5;
 encoder_pin_diameter = 2.5;
 encoder_pin_distance = 6;
 
-claw_mount_distance = 40;
+claw_mount_distance = 42;
 claw_mount_height_from_base = 9.5;
 claw_mount_total_height = mount_total_thickness + claw_mount_height_from_base;
 claw_mount_offset = 4;
@@ -114,5 +114,5 @@ module faceplate() {
     }
 }
 
-// wall_mount();
-faceplate();
+wall_mount();
+// faceplate();
