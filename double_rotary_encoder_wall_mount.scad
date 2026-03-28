@@ -21,7 +21,7 @@ encoder_pin_diameter = 2.5;
 encoder_pin_distance = 6;
 
 claw_mount_distance = 42;
-claw_mount_height_from_base = 9.5;
+claw_mount_height_from_base = 12.7;
 claw_mount_total_height = mount_total_thickness + claw_mount_height_from_base;
 claw_mount_offset = 4;
 

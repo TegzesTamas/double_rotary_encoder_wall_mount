@@ -8,11 +8,11 @@ module claw_mount(
     claw_hole_depth  = 6,
     claw_hole_height = 4,
     claw_hole_offset = 2.2,
-    wall_thickness   = 1.5,
+    wall_thickness   = 2.5,
     total_height     = 10,
     screw_diameter   = 3.5,
     nut_diameter     = 6.65,
-    nut_thickness    = 3
+    nut_thickness    = 4
 ) {
 
     base_z = nut_thickness + wall_thickness;
